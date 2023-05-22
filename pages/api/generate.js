@@ -15,7 +15,7 @@ export default async function (req, res) {
     });
     return;
   }
-
+  console.log('req.body', req.body);
   const prompt = req.body.prompt || '';
   if (prompt.trim().length === 0) {
     res.status(400).json({
@@ -27,6 +27,7 @@ export default async function (req, res) {
   }
 
   try {
+    console.log('prompt', prompt);
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: prompt,
