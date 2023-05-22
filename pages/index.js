@@ -14,6 +14,7 @@ export default function Home() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'Accept-Charset': 'UTF-8',
         },
         body: JSON.stringify({ prompt: promptInput }),
       });
