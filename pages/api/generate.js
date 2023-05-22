@@ -34,6 +34,7 @@ export default async function (req, res) {
       temperature: 0,
       max_tokens: 4000
     });
+    console.log('here');
     console.log('completion', completion.data);
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
