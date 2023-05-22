@@ -6,6 +6,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
+  console.log('Coming to server', req.body);
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
