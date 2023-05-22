@@ -3,18 +3,19 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [promptInput, setPromptInput] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
     event.preventDefault();
+    setResult(null);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ prompt: promptInput }),
       });
 
       const data = await response.json();
@@ -23,8 +24,8 @@ export default function Home() {
       }
 
       setResult(data.result);
-      setAnimalInput("");
-    } catch(error) {
+      // setPromptInput("Js code to convert Cel degree to Fah degree");
+    } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
@@ -35,21 +36,12 @@ export default function Home() {
     <div>
       <Head>
         <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Name my pet</h3>
         <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="animal"
-            placeholder="Enter an animal"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
-          />
-          <input type="submit" value="Generate names" />
+          <textarea name='prompt' rows={4} value={promptInput} placeholder="Input prompt" onChange={(e) => setPromptInput(e.target.value)}></textarea>
+          <input type="submit" value="Generate output" />
         </form>
         <div className={styles.result}>{result}</div>
       </main>
