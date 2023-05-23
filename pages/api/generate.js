@@ -32,7 +32,10 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: prompt,
       temperature: 0,
-      max_tokens: 256
+      max_tokens: 3539,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0
     });
     console.log('here');
     console.log('completion', completion.data);
