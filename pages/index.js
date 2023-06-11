@@ -42,7 +42,7 @@ export default function Home() {
       <main className={styles.main}>
         <form onSubmit={onSubmit}>
           <textarea name='prompt' rows={4} value={promptInput} placeholder="Input prompt" onChange={(e) => setPromptInput(e.target.value)}></textarea>
-          <input type="submit" value="Generate output hehe" />
+          <input type="submit" value="Generate output haha" />
         </form>
         <div className={styles.result}>{result}</div>
       </main>
